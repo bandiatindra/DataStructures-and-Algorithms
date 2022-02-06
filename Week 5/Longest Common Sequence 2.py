@@ -1,27 +1,23 @@
-#Uses python3
-
 import sys
-# not correct solution needs changes. 
+
 def lcs2(a, b):
     #write your code here
     m = len(a) 
     n = len (b) 
     #Always intitalize 2d Array like this! 
-    D = [[0] * (n+1) for i in range(m+1)] 
-    
-    #Initialize edges
-    for i in range(m+1):
-       D[i][0] = i
-       for j in range(n+1):
-           D[0][j] = j
-           
-    count =0
-    for i in range (1, m+1):
-        for j in range (1,n+1):
-            if a[i-1] == b[j-1]:
-                count = count + 1
-
-    return count
+      
+        
+    D = [[0]*(n+1) for i in range(m+1)]
+    # The last row and column should remain zero as edge cases. 
+        
+    for i in range(m-1,-1,-1):
+        for j in range(n-1,-1,-1):
+            if a[i]==b[j]:
+                D[i][j] = 1 + D[i+1][j+1]
+            else:
+                D[i][j] = max(D[i+1][j], D[i][j+1])
+                    
+    return D[0][0]
 
 if __name__ == '__main__':
     input = sys.stdin.read()
