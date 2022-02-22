@@ -4,6 +4,7 @@
 # 1. First unmatched closing bracket which dosent have an opening bracket before it eg - ] in  "]()"
 # 2. Closes the wrong bracket like } in "()[}"
 # 3. First unmatched opening bracket which does not have a corresponding closing bracket like ( in "{}([]"
+# checking how git works
 
 
 from collections import namedtuple
